@@ -14,9 +14,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        
+                
 - name: Check project files
-  run: |
+  run: 
     pwd
     find . -name "*.xcodeproj" -o -name "*.xcworkspace"
 
