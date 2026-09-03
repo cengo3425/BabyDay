@@ -2,11 +2,9 @@ name: iOS Build
 
 on:
   push:
-    branches:
-      - main
+    branches: ["main"]
   pull_request:
-    branches:
-      - main
+    branches: ["main"]
 
 jobs:
   build:
@@ -17,29 +15,34 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Check project files
+      - name: Find Xcode project
+        shell: bash
         run: |
-          echo "Current directory:"
-          pwd
+          echo "Repository contents:"
+          find . -maxdepth 5 -type f \( -name "*.xcodeproj" -o -name "*.xcworkspace" \) -print
 
-          echo "Project files:"
-          find . -maxdepth 3 \( -name "*.xcodeproj" -o -name "*.xcworkspace" \) -print
+          PROJECT=$(find . -type d -name "BabyDay.xcodeproj" -print -quit)
 
-      - name: Clean Build Folder
-        run: |
-          rm -rf "$RUNNER_TEMP/BabyDayBuild"
+          if [ -z "$PROJECT" ]; then
+            echo "ERROR: BabyDay.xcodeproj bulunamadı!"
+            echo "Bulunan Xcode dosyaları:"
+            find . -type f \( -name "*.xcodeproj" -o -name "*.xcworkspace" \) -print
+            exit 1
+          fi
+
+          echo "FOUND PROJECT: $PROJECT"
+          echo "PROJECT_PATH=$PROJECT" >> "$GITHUB_ENV"
 
       - name: Build BabyDay
+        shell: bash
         run: |
-          set -o pipefail
+          echo "Building: $PROJECT_PATH"
 
           xcodebuild \
-            -project "BabyDay.xcodeproj" \
+            -project "$PROJECT_PATH" \
             -scheme "BabyDay" \
-            -configuration "Release" \
-            -sdk "iphoneos" \
-            -destination "generic/platform=iOS" \
-            -derivedDataPath "$RUNNER_TEMP/BabyDayBuild" \
+            -sdk iphonesimulator \
+            -configuration Debug \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
             build
@@ -47,5 +50,4 @@ jobs:
       - name: Check Build Result
         if: always()
         run: |
-          echo "Build directory:"
-          find "$RUNNER_TEMP/BabyDayBuild" -maxdepth 5 -type d 2>/dev/null | head -100
+          echo "Build step finished."
