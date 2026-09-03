@@ -19,56 +19,44 @@ jobs:
 
       - name: Check project files
         run: |
-          echo "📁 Çalışma klasörü:"
           pwd
+          echo "Xcode projects:"
+          find . -name "*.xcodeproj" -print
+          echo "Xcode workspaces:"
+          find . -name "*.xcworkspace" -print
 
-          echo ""
-          echo "📦 Xcode proje dosyaları:"
-          find . -name "*.xcodeproj" -type d -print
-
-          echo ""
-          echo "📦 Xcode workspace dosyaları:"
-          find . -name "*.xcworkspace" -type d -print
-
-      - name: Find Xcode project
-        id: find_project
+      - name: Select Xcode
         run: |
-          PROJECT=$(find . -name "*.xcodeproj" -type d -print -quit)
+          sudo xcode-select -s /Applications/Xcode.app
+          xcodebuild -version
 
-          if [ -z "$PROJECT" ]; then
-            echo "❌ Xcode projesi bulunamadı!"
-            echo ""
-            echo "GitHub'a yüklenen dosyalar:"
-            find . -maxdepth 5 -type f | sort
-            exit 1
-          fi
-
-          echo "✅ Xcode projesi bulundu:"
-          echo "$PROJECT"
-
-          echo "project=$PROJECT" >> "$GITHUB_OUTPUT"
-
-      - name: Show Xcode schemes
+      - name: Clean Build Folder
         run: |
-          PROJECT="${{ steps.find_project.outputs.project }}"
-
-          echo "🔍 Proje:"
-          echo "$PROJECT"
-
-          echo ""
-          echo "🔍 Scheme listesi:"
-          xcodebuild -project "$PROJECT" -list
-
-      - name: Build
-        run: |
-          PROJECT="${{ steps.find_project.outputs.project }}"
-
-          echo "🚀 Build başlıyor..."
-          echo "Project: $PROJECT"
-
           xcodebuild \
-            -project "$PROJECT" \
+            -project BabyDay.xcodeproj \
             -scheme BabyDay \
+            -configuration Debug \
+            -sdk iphonesimulator \
+            clean \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: Build BabyDay
+        run: |
+          xcodebuild \
+            -project BabyDay.xcodeproj \
+            -scheme BabyDay \
+            -configuration Debug \
             -sdk iphonesimulator \
             -destination 'generic/platform=iOS Simulator' \
-            build
+            -derivedDataPath "$RUNNER_TEMP/DerivedData" \
+            build \
+            CODE_SIGNING_ALLOWED=NO \
+            ONLY_ACTIVE_ARCH=YES \
+            ARCHS=arm64 \
+            VALID_ARCHS=arm64 \
+            EXCLUDED_ARCHS=x86_64
+
+      - name: Check Build Result
+        run: |
+          echo "Build completed."
+          find "$RUNNER_TEMP/DerivedData" -name "*.app" -print
