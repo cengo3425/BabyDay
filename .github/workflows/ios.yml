@@ -16,10 +16,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build
-        run: |
-          xcodebuild \
-            -project BabyDay.xcodeproj \
-            -scheme BabyDay \
-            -sdk iphonesimulator \
-            -destination 'generic/platform=iOS Simulator' \
-            build
+  run: |
+    xcodebuild \
+      -project BabyDay.xcodeproj \
+      -scheme BabyDay \
+      -sdk iphonesimulator \
+      -destination 'generic/platform=iOS Simulator' \
+      build
