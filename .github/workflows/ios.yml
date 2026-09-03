@@ -15,39 +15,28 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Find Xcode project
-        shell: bash
+      - name: Show project files
         run: |
-          echo "Repository contents:"
-          find . -maxdepth 5 -type f \( -name "*.xcodeproj" -o -name "*.xcworkspace" \) -print
+          pwd
+          find . -name "*.xcodeproj" -o -name "*.xcworkspace"
 
-          PROJECT=$(find . -type d -name "BabyDay.xcodeproj" -print -quit)
-
-          if [ -z "$PROJECT" ]; then
-            echo "ERROR: BabyDay.xcodeproj bulunamadı!"
-            echo "Bulunan Xcode dosyaları:"
-            find . -type f \( -name "*.xcodeproj" -o -name "*.xcworkspace" \) -print
-            exit 1
-          fi
-
-          echo "FOUND PROJECT: $PROJECT"
-          echo "PROJECT_PATH=$PROJECT" >> "$GITHUB_ENV"
-
-      - name: Build BabyDay
-        shell: bash
+      - name: Clean Build
         run: |
-          echo "Building: $PROJECT_PATH"
-
           xcodebuild \
-            -project "$PROJECT_PATH" \
-            -scheme "BabyDay" \
-            -sdk iphonesimulator \
+            -project BabyDay.xcodeproj \
+            -target BabyDay \
             -configuration Debug \
+            -sdk iphonesimulator \
+            -derivedDataPath "$RUNNER_TEMP/BabyDayBuild" \
+            clean build \
             CODE_SIGNING_ALLOWED=NO \
-            CODE_SIGNING_REQUIRED=NO \
-            build
+            CODE_SIGNING_REQUIRED=NO
 
       - name: Check Build Result
-        if: always()
         run: |
-          echo "Build step finished."
+          if [ -d "$RUNNER_TEMP/BabyDayBuild/Build/Products/Debug-iphonesimulator/BabyDay.app" ]; then
+            echo "✅ BabyDay build başarılı."
+          else
+            echo "❌ BabyDay.app bulunamadı."
+            exit 1
+          fi
