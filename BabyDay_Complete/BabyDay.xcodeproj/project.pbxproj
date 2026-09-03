@@ -30,6 +30,7 @@
 		AA33770EE9BB481F800DD8E6 /* Info.plist */ = { isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BabyDay/Info.plist"; sourceTree = "<group>"; };
 		7F11632177F74B4FAF01FE41 /* BabyDay.entitlements */ = { isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "BabyDay/BabyDay.entitlements"; sourceTree = "<group>"; };
 		5A2861CFA341425B8BA0984E /* BabyDay.app */ = { isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BabyDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
+
 		D6D36E8AF71346CDAACEB591 /* BabyDayApp.swift in Sources */ = { isa = PBXBuildFile; fileRef = 9E080A71B0F847A7868FD6AE; };
 		57D3B670C8E94BC39FAD25C8 /* BabyEventModel.swift in Sources */ = { isa = PBXBuildFile; fileRef = 104F85870AE7473BAB6D1195; };
 		2F846D74402A4DFCA69DBEFB /* BabyModel.swift in Sources */ = { isa = PBXBuildFile; fileRef = 0E63B90934C8454AB35A8AFE; };
@@ -51,88 +52,297 @@
 		5D839EF914634AFC866CD841 /* ProfileView.swift in Sources */ = { isa = PBXBuildFile; fileRef = 03AE56DFFEAE436BA0FD7FFC; };
 		89E614988C634D2F90E1500E /* SettingsViews.swift in Sources */ = { isa = PBXBuildFile; fileRef = 0FE1C1CE58DA4FBA8467BB89; };
 		0B6ACD014B214237BE219217 /* BabyDay.storekit in Resources */ = { isa = PBXBuildFile; fileRef = 796A98B1DA7E4D49AD6B10A5; };
-		F519643842BC452FBD0A4E10 = { isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (
-			D6D36E8AF71346CDAACEB591,
-			57D3B670C8E94BC39FAD25C8,
-			2F846D74402A4DFCA69DBEFB,
-			FA846B9C3078447E8E6350D6,
-			CAFB5424B6D94D059711E759,
-			9F251A7FF2CB4F2599D60112,
-			52E6A50F0945478CB987CE1E,
-			E0BDF600154A4FA28EAA0F3A,
-			5482AC458FBC49C1B6179295,
-			42CDD44D340648E99BE38112,
-			C1619058131E4EEDA7B25B72,
-			47839357939241EEBD38B397,
-			950495E935E840709395213E,
-			AE3F8BE8456F454694918AB1,
-			5FA8FF5374914D449B5C7F99,
-			1A6BE3EF7B2B41D9808C6352,
-			729D29C111A84128A93BE812,
-			A70BA70B42164555A2497E26,
-			5D839EF914634AFC866CD841,
-			89E614988C634D2F90E1500E,
-		); runOnlyForDeploymentPostprocessing = 0; };
-		E23EAA65D6474350866BCD48 = { isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = ( 0B6ACD014B214237BE219217, ); runOnlyForDeploymentPostprocessing = 0; };
-		E82BFDA5F0D944CF84CA723D = { isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = ( ); runOnlyForDeploymentPostprocessing = 0; };
-		5D76056CF9F34DFEAE511C38 /* AppIcon.appiconset */ = { isa = PBXGroup; children = (
-			72684D01D28E4F8880CD1C7E /* AppIcon.png */,
-			E761C40AE7F544D09DF40236 /* Contents.json */,
-		); name = AppIcon.appiconset; path = "AppIcon.appiconset"; sourceTree = "<group>"; };
-		966BD12659FA48D7BF0A6CD4 /* Assets.xcassets */ = { isa = PBXGroup; children = (
-			5D76056CF9F34DFEAE511C38 /* AppIcon.appiconset */,
-		); name = Assets.xcassets; path = "Assets.xcassets"; sourceTree = "<group>"; };
-		1B3BA82B012D433E9D3D3A48 /* Models */ = { isa = PBXGroup; children = (
-			104F85870AE7473BAB6D1195 /* BabyEventModel.swift */,
-			0E63B90934C8454AB35A8AFE /* BabyModel.swift */,
-			3DF92C3F4F3D4780B130B5FA /* GrowthMeasurementModel.swift */,
-			F2DB7E6BE8B3401F877E8C1B /* WHOGrowthCalculator.swift */,
-			0DAC4B3AC4A4499484F72286 /* WHOGrowthStandard.swift */,
-		); name = Models; path = "Models"; sourceTree = "<group>"; };
-		E3950B23AC614FC3B7D15FC4 /* Services */ = { isa = PBXGroup; children = (
-			B1EE64BB0E224247A8E0B431 /* FamilySharingManager.swift */,
-			59056B20A2D64FFD98A376C1 /* NotificationManager.swift */,
-			740697748C804EF59F6D5491 /* PremiumStore.swift */,
-		); name = Services; path = "Services"; sourceTree = "<group>"; };
-		5E85FC692B0B4AF9BA7C72E2 /* Theme */ = { isa = PBXGroup; children = (
-			A4916B8F11D44847BEAA41A4 /* BabyDayTheme.swift */,
-		); name = Theme; path = "Theme"; sourceTree = "<group>"; };
-		EFBDE3FFD5CA42539B896365 /* Views */ = { isa = PBXGroup; children = (
-			4048284072F84E32BBED2B4F /* AddEventView.swift */,
-			D75A4F0E27C54BD0B058FCF2 /* ContentView.swift */,
-			4E081015274645219A6D4A63 /* DashboardView.swift */,
-			30CF1083B42947DF871B2094 /* FamilySharingView.swift */,
-			D2F984CCC9DC4F49BB31D93D /* GrowthView.swift */,
-			84DB6E343E4E45DE949C1488 /* HistoryView.swift */,
-			72CAB0ED84BD4885A2353714 /* NotificationSettingsView.swift */,
-			AB666818882E453295AC15D9 /* OnboardingView.swift */,
-			03AE56DFFEAE436BA0FD7FFC /* ProfileView.swift */,
-			0FE1C1CE58DA4FBA8467BB89 /* SettingsViews.swift */,
-		); name = Views; path = "Views"; sourceTree = "<group>"; };
-		B146A5CCBFBE48AFB3E5D9D1 /* BabyDay */ = { isa = PBXGroup; children = (
-			966BD12659FA48D7BF0A6CD4 /* Assets.xcassets */,
-			9E080A71B0F847A7868FD6AE /* BabyDayApp.swift */,
-			1B3BA82B012D433E9D3D3A48 /* Models */,
-			E3950B23AC614FC3B7D15FC4 /* Services */,
-			5E85FC692B0B4AF9BA7C72E2 /* Theme */,
-			EFBDE3FFD5CA42539B896365 /* Views */,
-		); name = BabyDay; path = "BabyDay"; sourceTree = "<group>"; };
-		3F2B4B1690D4439DBFE25F70 /* BabyDay */ = { isa = PBXGroup; children = (
-			B146A5CCBFBE48AFB3E5D9D1 /* BabyDay */,
-			796A98B1DA7E4D49AD6B10A5 /* BabyDay.storekit */,
-			AA33770EE9BB481F800DD8E6 /* Info.plist */,
-			7F11632177F74B4FAF01FE41 /* BabyDay.entitlements */,
-		); name = BabyDay; path = BabyDay; sourceTree = "<group>"; };
-		BAADCB30524D44F7B5BE5B71 /* Products */ = { isa = PBXGroup; children = ( 5A2861CFA341425B8BA0984E /* BabyDay.app */, ); name = Products; sourceTree = "<group>"; };
-		BCC7A1524D7A4993B34BBFEC /* Main Group */ = { isa = PBXGroup; children = ( 3F2B4B1690D4439DBFE25F70 /* BabyDay */, BAADCB30524D44F7B5BE5B71 /* Products */, ); sourceTree = "<group>"; };
-		0037C4448C0D4DD7B7AF28A3 /* BabyDay */ = { isa = PBXNativeTarget; buildConfigurationList = CB3E3CCFAEF7402DB1E5B02C; buildPhases = ( F519643842BC452FBD0A4E10, E23EAA65D6474350866BCD48, E82BFDA5F0D944CF84CA723D, ); buildRules = ( ); dependencies = ( ); name = BabyDay; productName = BabyDay; productReference = 5A2861CFA341425B8BA0984E; productType = "com.apple.product-type.application"; };
-		62352E98B44A4166BE8765E9 /* Project object */ = { isa = PBXProject; attributes = { LastUpgradeCheck = 1600; ORGANIZATIONNAME = BabyDay; TargetAttributes = { 0037C4448C0D4DD7B7AF28A3 = { CreatedOnToolsVersion = 16.0; }; }; }; buildConfigurationList = 47CFEE8E40D24841AC3A84DF; compatibilityVersion = "Xcode 14.0"; developmentRegion = en; hasScannedForEncodings = 0; knownRegions = ( en, tr, Base, ); mainGroup = BCC7A1524D7A4993B34BBFEC; productRefGroup = BAADCB30524D44F7B5BE5B71; projectDirPath = ""; projectRoot = ""; targets = ( 0037C4448C0D4DD7B7AF28A3, ); };
-		8483964E60EC490DBC324A2C = { isa = XCBuildConfiguration; buildSettings = { IPHONEOS_DEPLOYMENT_TARGET = 17.0; SWIFT_VERSION = 5.9; }; name = Debug; };
-		E58A78E5257546F2AD15313C = { isa = XCBuildConfiguration; buildSettings = { IPHONEOS_DEPLOYMENT_TARGET = 17.0; SWIFT_VERSION = 5.9; }; name = Release; };
-		F2F3CC8999284B73AC76CE15 = { isa = XCBuildConfiguration; buildSettings = { SDKROOT = iphoneos; SWIFT_VERSION = 5.9; IPHONEOS_DEPLOYMENT_TARGET = 17.0; PRODUCT_BUNDLE_IDENTIFIER = com.cengizgol.babyday; INFOPLIST_FILE = BabyDay/Info.plist; CODE_SIGN_ENTITLEMENTS = BabyDay/BabyDay.entitlements; ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon; TARGETED_DEVICE_FAMILY = "1,2"; CURRENT_PROJECT_VERSION = 1; MARKETING_VERSION = 1.0.0; CODE_SIGN_STYLE = Automatic; }; name = Debug; };
-		04ADC1D96F8546EC9EBBE288 = { isa = XCBuildConfiguration; buildSettings = { SDKROOT = iphoneos; SWIFT_VERSION = 5.9; IPHONEOS_DEPLOYMENT_TARGET = 17.0; PRODUCT_BUNDLE_IDENTIFIER = com.cengizgol.babyday; INFOPLIST_FILE = BabyDay/Info.plist; CODE_SIGN_ENTITLEMENTS = BabyDay/BabyDay.entitlements; ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon; TARGETED_DEVICE_FAMILY = "1,2"; CURRENT_PROJECT_VERSION = 1; MARKETING_VERSION = 1.0.0; CODE_SIGN_STYLE = Automatic; }; name = Release; };
-		47CFEE8E40D24841AC3A84DF = { isa = XCConfigurationList; buildConfigurations = ( 8483964E60EC490DBC324A2C, E58A78E5257546F2AD15313C, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
-		CB3E3CCFAEF7402DB1E5B02C = { isa = XCConfigurationList; buildConfigurations = ( F2F3CC8999284B73AC76CE15, 04ADC1D96F8546EC9EBBE288, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+
+		F519643842BC452FBD0A4E10 = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6D36E8AF71346CDAACEB591,
+				57D3B670C8E94BC39FAD25C8,
+				2F846D74402A4DFCA69DBEFB,
+				FA846B9C3078447E8E6350D6,
+				CAFB5424B6D94D059711E759,
+				9F251A7FF2CB4F2599D60112,
+				52E6A50F0945478CB987CE1E,
+				E0BDF600154A4FA28EAA0F3A,
+				5482AC458FBC49C1B6179295,
+				42CDD44D340648E99BE38112,
+				C1619058131E4EEDA7B25B72,
+				47839357939241EEBD38B397,
+				950495E935E840709395213E,
+				AE3F8BE8456F454694918AB1,
+				5FA8FF5374914D449B5C7F99,
+				1A6BE3EF7B2B41D9808C6352,
+				729D29C111A84128A93BE812,
+				A70BA70B42164555A2497E26,
+				5D839EF914634AFC866CD841,
+				89E614988C634D2F90E1500E,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+
+		E23EAA65D6474350866BCD48 = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = ( 0B6ACD014B214237BE219217, );
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+
+		E82BFDA5F0D944CF84CA723D = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = ( );
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+
+		5D76056CF9F34DFEAE511C38 /* AppIcon.appiconset */ = {
+			isa = PBXGroup;
+			children = (
+				72684D01D28E4F8880CD1C7E /* AppIcon.png */,
+				E761C40AE7F544D09DF40236 /* Contents.json */,
+			);
+			name = AppIcon.appiconset;
+			path = "AppIcon.appiconset";
+			sourceTree = "<group>";
+		};
+
+		966BD12659FA48D7BF0A6CD4 /* Assets.xcassets */ = {
+			isa = PBXGroup;
+			children = (
+				5D76056CF9F34DFEAE511C38 /* AppIcon.appiconset */,
+			);
+			name = Assets.xcassets;
+			path = "Assets.xcassets";
+			sourceTree = "<group>";
+		};
+
+		1B3BA82B012D433E9D3D3A48 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				104F85870AE7473BAB6D1195 /* BabyEventModel.swift */,
+				0E63B90934C8454AB35A8AFE /* BabyModel.swift */,
+				3DF92C3F4F3D4780B130B5FA /* GrowthMeasurementModel.swift */,
+				F2DB7E6BE8B3401F877E8C1B /* WHOGrowthCalculator.swift */,
+				0DAC4B3AC4A4499484F72286 /* WHOGrowthStandard.swift */,
+			);
+			name = Models;
+			path = "Models";
+			sourceTree = "<group>";
+		};
+
+		E3950B23AC614FC3B7D15FC4 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B1EE64BB0E224247A8E0B431 /* FamilySharingManager.swift */,
+				59056B20A2D64FFD98A376C1 /* NotificationManager.swift */,
+				740697748C804EF59F6D5491 /* PremiumStore.swift */,
+			);
+			name = Services;
+			path = "Services";
+			sourceTree = "<group>";
+		};
+
+		5E85FC692B0B4AF9BA7C72E2 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				A4916B8F11D44847BEAA41A4 /* BabyDayTheme.swift */,
+			);
+			name = Theme;
+			path = "Theme";
+			sourceTree = "<group>";
+		};
+
+		EFBDE3FFD5CA42539B896365 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4048284072F84E32BBED2B4F /* AddEventView.swift */,
+				D75A4F0E27C54BD0B058FCF2 /* ContentView.swift */,
+				4E081015274645219A6D4A63 /* DashboardView.swift */,
+				30CF1083B42947DF871B2094 /* FamilySharingView.swift */,
+				D2F984CCC9DC4F49BB31D93D /* GrowthView.swift */,
+				84DB6E343E4E45DE949C1488 /* HistoryView.swift */,
+				72CAB0ED84BD4885A2353714 /* NotificationSettingsView.swift */,
+				AB666818882E453295AC15D9 /* OnboardingView.swift */,
+				03AE56DFFEAE436BA0FD7FFC /* ProfileView.swift */,
+				0FE1C1CE58DA4FBA8467BB89 /* SettingsViews.swift */,
+			);
+			name = Views;
+			path = "Views";
+			sourceTree = "<group>";
+		};
+
+		B146A5CCBFBE48AFB3E5D9D1 /* BabyDay */ = {
+			isa = PBXGroup;
+			children = (
+				966BD12659FA48D7BF0A6CD4 /* Assets.xcassets */,
+				9E080A71B0F847A7868FD6AE /* BabyDayApp.swift */,
+				1B3BA82B012D433E9D3D3A48 /* Models */,
+				E3950B23AC614FC3B7D15FC4 /* Services */,
+				5E85FC692B0B4AF9BA7C72E2 /* Theme */,
+				EFBDE3FFD5CA42539B896365 /* Views */,
+			);
+			name = BabyDay;
+			path = "BabyDay";
+			sourceTree = "<group>";
+		};
+
+		3F2B4B1690D4439DBFE25F70 /* BabyDay */ = {
+			isa = PBXGroup;
+			children = (
+				B146A5CCBFBE48AFB3E5D9D1 /* BabyDay */,
+				796A98B1DA7E4D49AD6B10A5 /* BabyDay.storekit */,
+				AA33770EE9BB481F800DD8E6 /* Info.plist */,
+				7F11632177F74B4FAF01FE41 /* BabyDay.entitlements */,
+			);
+			name = BabyDay;
+			path = BabyDay;
+			sourceTree = "<group>";
+		};
+
+		BAADCB30524D44F7B5BE5B71 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5A2861CFA341425B8BA0984E /* BabyDay.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+
+		BCC7A1524D7A4993B34BBFEC /* Main Group */ = {
+			isa = PBXGroup;
+			children = (
+				3F2B4B1690D4439DBFE25F70 /* BabyDay */,
+				BAADCB30524D44F7B5BE5B71 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+
+		0037C4448C0D4DD7B7AF28A3 /* BabyDay */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB3E3CCFAEF7402DB1E5B02C;
+			buildPhases = (
+				F519643842BC452FBD0A4E10,
+				E23EAA65D6474350866BCD48,
+				E82BFDA5F0D944CF84CA723D,
+			);
+			buildRules = ( );
+			dependencies = ( );
+			name = BabyDay;
+			productName = BabyDay;
+			productReference = 5A2861CFA341425B8BA0984E;
+			productType = "com.apple.product-type.application";
+		};
+
+		62352E98B44A4166BE8765E9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1600;
+				ORGANIZATIONNAME = BabyDay;
+				TargetAttributes = {
+					0037C4448C0D4DD7B7AF28A3 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = 47CFEE8E40D24841AC3A84DF;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				tr,
+				Base,
+			);
+			mainGroup = BCC7A1524D7A4993B34BBFEC;
+			productRefGroup = BAADCB30524D44F7B5BE5B71;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0037C4448C0D4DD7B7AF28A3,
+			);
+		};
+
+		8483964E60EC490DBC324A2C = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SWIFT_VERSION = 5.9;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+			};
+			name = Debug;
+		};
+
+		E58A78E5257546F2AD15313C = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SWIFT_VERSION = 5.9;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+			};
+			name = Release;
+		};
+
+		F2F3CC8999284B73AC76CE15 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.9;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cengizgol.babyday;
+				INFOPLIST_FILE = BabyDay/Info.plist;
+				CODE_SIGN_ENTITLEMENTS = BabyDay/BabyDay.entitlements;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				CURRENT_PROJECT_VERSION = 1;
+				MARKETING_VERSION = 1.0.0;
+				CODE_SIGN_STYLE = Automatic;
+			};
+			name = Debug;
+		};
+
+		04ADC1D96F8546EC9EBBE288 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.9;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cengizgol.babyday;
+				INFOPLIST_FILE = BabyDay/Info.plist;
+				CODE_SIGN_ENTITLEMENTS = BabyDay/BabyDay.entitlements;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				CURRENT_PROJECT_VERSION = 1;
+				MARKETING_VERSION = 1.0.0;
+				CODE_SIGN_STYLE = Automatic;
+			};
+			name = Release;
+		};
+
+		47CFEE8E40D24841AC3A84DF = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8483964E60EC490DBC324A2C,
+				E58A78E5257546F2AD15313C,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+
+		CB3E3CCFAEF7402DB1E5B02C = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2F3CC8999284B73AC76CE15,
+				04ADC1D96F8546EC9EBBE288,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 	};
 	rootObject = 62352E98B44A4166BE8765E9 /* Project object */;
 }
