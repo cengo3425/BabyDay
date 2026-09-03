@@ -2,9 +2,11 @@ name: iOS Build
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
   pull_request:
-    branches: ["main"]
+    branches:
+      - main
 
 jobs:
   build:
@@ -17,13 +19,55 @@ jobs:
 
       - name: Check project files
         run: |
+          echo "📁 Çalışma klasörü:"
           pwd
-          find . -name "*.xcodeproj" -o -name "*.xcworkspace"
+
+          echo ""
+          echo "📦 Xcode proje dosyaları:"
+          find . -name "*.xcodeproj" -type d -print
+
+          echo ""
+          echo "📦 Xcode workspace dosyaları:"
+          find . -name "*.xcworkspace" -type d -print
+
+      - name: Find Xcode project
+        id: find_project
+        run: |
+          PROJECT=$(find . -name "*.xcodeproj" -type d -print -quit)
+
+          if [ -z "$PROJECT" ]; then
+            echo "❌ Xcode projesi bulunamadı!"
+            echo ""
+            echo "GitHub'a yüklenen dosyalar:"
+            find . -maxdepth 5 -type f | sort
+            exit 1
+          fi
+
+          echo "✅ Xcode projesi bulundu:"
+          echo "$PROJECT"
+
+          echo "project=$PROJECT" >> "$GITHUB_OUTPUT"
+
+      - name: Show Xcode schemes
+        run: |
+          PROJECT="${{ steps.find_project.outputs.project }}"
+
+          echo "🔍 Proje:"
+          echo "$PROJECT"
+
+          echo ""
+          echo "🔍 Scheme listesi:"
+          xcodebuild -project "$PROJECT" -list
 
       - name: Build
         run: |
+          PROJECT="${{ steps.find_project.outputs.project }}"
+
+          echo "🚀 Build başlıyor..."
+          echo "Project: $PROJECT"
+
           xcodebuild \
-            -project BabyDay.xcodeproj \
+            -project "$PROJECT" \
             -scheme BabyDay \
             -sdk iphonesimulator \
             -destination 'generic/platform=iOS Simulator' \
