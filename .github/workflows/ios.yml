@@ -17,46 +17,63 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Check project files
+      - name: Find Xcode Project
+        shell: bash
         run: |
+          echo "Current directory:"
           pwd
-          echo "Xcode projects:"
-          find . -name "*.xcodeproj" -print
-          echo "Xcode workspaces:"
-          find . -name "*.xcworkspace" -print
 
-      - name: Select Xcode
-        run: |
-          sudo xcode-select -s /Applications/Xcode.app
-          xcodebuild -version
+          echo ""
+          echo "Repository files:"
+          find . -maxdepth 5 -type f | sort | head -300
 
-      - name: Clean Build Folder
+          echo ""
+          echo "Searching for Xcode project..."
+
+          PROJECT=$(find . -name "BabyDay.xcodeproj" -type d -print -quit)
+
+          if [ -z "$PROJECT" ]; then
+            echo "ERROR: BabyDay.xcodeproj could not be found."
+            echo ""
+            echo "Available Xcode projects:"
+            find . -name "*.xcodeproj" -type d
+            exit 1
+          fi
+
+          echo "FOUND PROJECT: $PROJECT"
+          echo "PROJECT=$PROJECT" >> "$GITHUB_ENV"
+
+      - name: Show Project Structure
+        shell: bash
         run: |
-          xcodebuild \
-            -project BabyDay.xcodeproj \
-            -scheme BabyDay \
-            -configuration Debug \
-            -sdk iphonesimulator \
-            clean \
-            CODE_SIGNING_ALLOWED=NO
+          echo "Using project:"
+          echo "$PROJECT"
+
+          echo ""
+          echo "Project directory:"
+          dirname "$PROJECT"
+
+          echo ""
+          echo "Project contents:"
+          find "$PROJECT" -maxdepth 2 -type f | sort | head -100
 
       - name: Build BabyDay
+        shell: bash
         run: |
+          echo "Building:"
+          echo "$PROJECT"
+
           xcodebuild \
-            -project BabyDay.xcodeproj \
+            -project "$PROJECT" \
             -scheme BabyDay \
             -configuration Debug \
             -sdk iphonesimulator \
-            -destination 'generic/platform=iOS Simulator' \
-            -derivedDataPath "$RUNNER_TEMP/DerivedData" \
-            build \
+            -destination 'platform=iOS Simulator,name=iPhone 16' \
             CODE_SIGNING_ALLOWED=NO \
-            ONLY_ACTIVE_ARCH=YES \
-            ARCHS=arm64 \
-            VALID_ARCHS=arm64 \
-            EXCLUDED_ARCHS=x86_64
+            build
 
       - name: Check Build Result
+        if: always()
+        shell: bash
         run: |
-          echo "Build completed."
-          find "$RUNNER_TEMP/DerivedData" -name "*.app" -print
+          echo "Build finished."
