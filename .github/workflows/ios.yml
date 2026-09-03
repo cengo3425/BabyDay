@@ -2,11 +2,9 @@ name: iOS Build
 
 on:
   push:
-    branches:
-      - main
+    branches: ["main"]
   pull_request:
-    branches:
-      - main
+    branches: ["main"]
 
 jobs:
   build:
@@ -17,63 +15,40 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Find Xcode Project
-        shell: bash
+      - name: Show project files
         run: |
           echo "Current directory:"
           pwd
+          echo "Project files:"
+          find . -maxdepth 3 \( -name "*.xcodeproj" -o -name "*.xcworkspace" \) -print
 
-          echo ""
-          echo "Repository files:"
-          find . -maxdepth 5 -type f | sort | head -300
+      - name: Select Xcode
+        run: |
+          sudo xcode-select -s /Applications/Xcode.app
+          xcodebuild -version
 
-          echo ""
-          echo "Searching for Xcode project..."
+      - name: Build BabyDay
+        run: |
+          set -o pipefail
 
-          PROJECT=$(find . -name "BabyDay.xcodeproj" -type d -print -quit)
+          PROJECT=$(find . -maxdepth 3 -name "BabyDay.xcodeproj" -print -quit)
 
           if [ -z "$PROJECT" ]; then
-            echo "ERROR: BabyDay.xcodeproj could not be found."
-            echo ""
-            echo "Available Xcode projects:"
-            find . -name "*.xcodeproj" -type d
+            echo "ERROR: BabyDay.xcodeproj bulunamadı."
             exit 1
           fi
 
-          echo "FOUND PROJECT: $PROJECT"
-          echo "PROJECT=$PROJECT" >> "$GITHUB_ENV"
-
-      - name: Show Project Structure
-        shell: bash
-        run: |
-          echo "Using project:"
-          echo "$PROJECT"
-
-          echo ""
-          echo "Project directory:"
-          dirname "$PROJECT"
-
-          echo ""
-          echo "Project contents:"
-          find "$PROJECT" -maxdepth 2 -type f | sort | head -100
-
-      - name: Build BabyDay
-        shell: bash
-        run: |
-          echo "Building:"
-          echo "$PROJECT"
+          echo "Project: $PROJECT"
 
           xcodebuild \
             -project "$PROJECT" \
-            -scheme BabyDay \
-            -configuration Debug \
+            -scheme "BabyDay" \
             -sdk iphonesimulator \
-            -destination 'platform=iOS Simulator,name=iPhone 16' \
-            CODE_SIGNING_ALLOWED=NO \
+            -configuration Debug \
+            -destination 'generic/platform=iOS Simulator' \
             build
 
       - name: Check Build Result
         if: always()
-        shell: bash
         run: |
-          echo "Build finished."
+          echo "Build workflow finished."
