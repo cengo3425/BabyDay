@@ -2,9 +2,11 @@ name: iOS Build
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
   pull_request:
-    branches: ["main"]
+    branches:
+      - main
 
 jobs:
   build:
@@ -15,40 +17,35 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Show project files
+      - name: Check project files
         run: |
           echo "Current directory:"
           pwd
+
           echo "Project files:"
           find . -maxdepth 3 \( -name "*.xcodeproj" -o -name "*.xcworkspace" \) -print
 
-      - name: Select Xcode
+      - name: Clean Build Folder
         run: |
-          sudo xcode-select -s /Applications/Xcode.app
-          xcodebuild -version
+          rm -rf "$RUNNER_TEMP/BabyDayBuild"
 
       - name: Build BabyDay
         run: |
           set -o pipefail
 
-          PROJECT=$(find . -maxdepth 3 -name "BabyDay.xcodeproj" -print -quit)
-
-          if [ -z "$PROJECT" ]; then
-            echo "ERROR: BabyDay.xcodeproj bulunamadı."
-            exit 1
-          fi
-
-          echo "Project: $PROJECT"
-
           xcodebuild \
-            -project "$PROJECT" \
+            -project "BabyDay.xcodeproj" \
             -scheme "BabyDay" \
-            -sdk iphonesimulator \
-            -configuration Debug \
-            -destination 'generic/platform=iOS Simulator' \
+            -configuration "Release" \
+            -sdk "iphoneos" \
+            -destination "generic/platform=iOS" \
+            -derivedDataPath "$RUNNER_TEMP/BabyDayBuild" \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
             build
 
       - name: Check Build Result
         if: always()
         run: |
-          echo "Build workflow finished."
+          echo "Build directory:"
+          find "$RUNNER_TEMP/BabyDayBuild" -maxdepth 5 -type d 2>/dev/null | head -100
