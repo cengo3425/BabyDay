@@ -1,0 +1,23 @@
+{
+  "identifier" : "com.babyday.storekit",
+  "products" : [
+    {
+      "displayPrice" : "49.00",
+      "familyShareable" : false,
+      "internalID" : "premium-monthly",
+      "localizations" : [
+        {
+          "description" : "BabyDay Premium aylık üyelik",
+          "displayName" : "BabyDay Premium",
+          "locale" : "tr"
+        }
+      ],
+      "productID" : "com.babyday.premium.monthly",
+      "recurringSubscriptionPeriod" : "P1M",
+      "referenceName" : "BabyDay Premium Monthly",
+      "type" : "RecurringSubscription"
+    }
+  ],
+  "settings" : { "defaultLocale" : "tr" },
+  "version" : 1
+}
