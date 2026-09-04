@@ -7,33 +7,59 @@ struct FamilySharingView: View {
 
     var body: some View {
         Form {
-            Section("Aile paylaşımı") {
-                Label("Ortak bebek günlüğü", systemImage: "person.2.fill")
-                    .font(.headline)
+            // MARK: - Aile Paylaşımı
 
-                Text("Eşin veya başka bir bakıcıyla BabyDay kayıtlarını paylaşmak için iCloud üzerinden özel bir paylaşım oluşturabilirsin.")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
+            Section("Aile paylaşımı") {
+                Label(
+                    "Ortak bebek günlüğü",
+                    systemImage: "person.2.fill"
+                )
+                .font(.headline)
+
+                Text(
+                    "Eşin veya başka bir bakıcıyla BabyDay kayıtlarını paylaşmak için iCloud üzerinden özel bir paylaşım oluşturabilirsin."
+                )
+                .font(.subheadline)
+                .foregroundStyle(Color.secondary)
             }
+
+            // MARK: - Durum
 
             Section("Durum") {
                 HStack {
                     Text("iCloud")
+
                     Spacer()
-                    Text(manager.isICloudAvailable ? "Hazır" : "Kontrol ediliyor")
-                        .foregroundStyle(manager.isICloudAvailable ? .green : .secondary)
+
+                    Text(
+                        manager.isICloudAvailable
+                        ? "Hazır"
+                        : "Kontrol ediliyor"
+                    )
+                    .foregroundStyle(
+                        manager.isICloudAvailable
+                        ? Color.green
+                        : Color.secondary
+                    )
                 }
 
                 Button("iCloud durumunu kontrol et") {
-                    Task { await manager.refreshAccountStatus() }
+                    Task {
+                        await manager.refreshAccountStatus()
+                    }
                 }
             }
+
+            // MARK: - Bilgi
 
             Section {
                 Button {
                     showingInfo = true
                 } label: {
-                    Label("Ebeveyn daveti nasıl çalışır?", systemImage: "questionmark.circle")
+                    Label(
+                        "Ebeveyn daveti nasıl çalışır?",
+                        systemImage: "questionmark.circle"
+                    )
                 }
             }
         }
@@ -41,10 +67,20 @@ struct FamilySharingView: View {
         .task {
             await manager.refreshAccountStatus()
         }
-        .alert("BabyDay aile paylaşımı", isPresented: $showingInfo) {
-            Button("Tamam", role: .cancel) {}
+        .alert(
+            "BabyDay aile paylaşımı",
+            isPresented: $showingInfo
+        ) {
+            Button(
+                "Tamam",
+                role: .cancel
+            ) {
+                showingInfo = false
+            }
         } message: {
-            Text("Paylaşım, iCloud hesabı üzerinden özel CloudKit paylaşımı olarak tasarlanır. Davet edilen kişi kabul ettiğinde paylaşılan kayıtlar kendi cihazındaki paylaşılan veritabanında görünür.")
+            Text(
+                "Paylaşım, iCloud hesabı üzerinden özel CloudKit paylaşımı olarak tasarlanır. Davet edilen kişi kabul ettiğinde paylaşılan kayıtlar kendi cihazındaki paylaşılan veritabanında görünür."
+            )
         }
     }
 }
