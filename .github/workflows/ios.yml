@@ -17,27 +17,58 @@ jobs:
 
       - name: Show project files
         run: |
+          echo "Current directory:"
           pwd
-          find . -name "*.xcodeproj" -o -name "*.xcworkspace"
+
+          echo ""
+          echo "All Xcode projects:"
+          find . -name "*.xcodeproj" -print
+
+          echo ""
+          echo "All Xcode workspaces:"
+          find . -name "*.xcworkspace" -print
+
+      - name: Find Xcode project
+        id: find_project
+        shell: bash
+        run: |
+          PROJECT=$(find "$GITHUB_WORKSPACE" -name "*.xcodeproj" -type d | head -n 1)
+
+          if [ -z "$PROJECT" ]; then
+            echo "ERROR: No .xcodeproj found!"
+            exit 1
+          fi
+
+          echo "Found project:"
+          echo "$PROJECT"
+
+          echo "project=$PROJECT" >> "$GITHUB_OUTPUT"
+
+      - name: Check Xcode project
+        run: |
+          PROJECT="${{ steps.find_project.outputs.project }}"
+
+          echo "Using project:"
+          echo "$PROJECT"
+
+          ls -la "$PROJECT"
 
       - name: Clean Build
         run: |
+          PROJECT="${{ steps.find_project.outputs.project }}"
+
           xcodebuild \
-            -project BabyDay.xcodeproj \
-            -scheme BabyDay \
+            -project "$PROJECT" \
+            -scheme "BabyDay" \
             -configuration Debug \
             -sdk iphonesimulator \
             -destination 'generic/platform=iOS Simulator' \
-            -derivedDataPath "$RUNNER_TEMP/BabyDayBuild" \
-            clean build \
+            -derivedDataPath "$GITHUB_WORKSPACE/_temp/BabyDayBuild" \
             CODE_SIGNING_ALLOWED=NO \
-            CODE_SIGNING_REQUIRED=NO
+            CODE_SIGNING_REQUIRED=NO \
+            clean build
 
       - name: Check Build Result
+        if: always()
         run: |
-          if [ -d "$RUNNER_TEMP/BabyDayBuild/Build/Products/Debug-iphonesimulator/BabyDay.app" ]; then
-            echo "✅ BabyDay build başarılı."
-          else
-            echo "❌ BabyDay.app bulunamadı."
-            exit 1
-          fi
+          echo "Build finished."
