@@ -23,37 +23,53 @@ final class FamilySharingManager: NSObject, ObservableObject {
     /// The root and child records must exist in a custom record zone.
     func prepareShare(for record: CKRecord) async throws -> CKShare {
         let share = CKShare(rootRecord: record)
-        share[CKRecord.SystemFieldKey.title] = "BabyDay • \(record.recordID.recordName)" as CKRecordValue
+
+        // CKShare.SystemFieldKey is the correct namespace
+        // for CloudKit share system fields.
+        share[CKShare.SystemFieldKey.title] =
+            "BabyDay • \(record.recordID.recordName)" as CKRecordValue
+
         share.publicPermission = .none
 
         let database = container.privateCloudDatabase
-        let operation = CKModifyRecordsOperation(recordsToSave: [record, share])
+
+        let operation = CKModifyRecordsOperation(
+            recordsToSave: [record, share]
+        )
+
         operation.savePolicy = .ifServerRecordUnchanged
 
         return try await withCheckedThrowingContinuation { continuation in
             var savedShare: CKShare?
+
             operation.perRecordSaveBlock = { _, result in
-                if case .success(let saved) = result, let share = saved as? CKShare {
+                if case .success(let saved) = result,
+                   let share = saved as? CKShare {
                     savedShare = share
                 }
             }
+
             operation.modifyRecordsResultBlock = { result in
                 switch result {
                 case .success:
                     if let savedShare {
                         continuation.resume(returning: savedShare)
                     } else {
-                        continuation.resume(throwing: CKError(.partialFailure))
+                        continuation.resume(
+                            throwing: CKError(.partialFailure)
+                        )
                     }
+
                 case .failure(let error):
                     continuation.resume(throwing: error)
                 }
             }
+
             database.add(operation)
         }
     }
 
     func shareURL(from share: CKShare) -> URL? {
-        share.url
+        return share.url
     }
 }
