@@ -34,24 +34,28 @@
 			path = BabyEventModel.swift;
 			sourceTree = "<group>";
 		};
+
 		0E63B90934C8454AB35A8AFE /* BabyModel.swift */ = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.swift;
 			path = BabyModel.swift;
 			sourceTree = "<group>";
 		};
+
 		3DF92C3F4F3D4780B130B5FA /* GrowthMeasurementModel.swift */ = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.swift;
 			path = GrowthMeasurementModel.swift;
 			sourceTree = "<group>";
 		};
+
 		F2DB7E6BE8B3401F877E8C1B /* WHOGrowthCalculator.swift */ = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.swift;
 			path = WHOGrowthCalculator.swift;
 			sourceTree = "<group>";
 		};
+
 		0DAC4B3AC4A4499484F72286 /* WHOGrowthStandard.swift */ = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.swift;
@@ -65,12 +69,14 @@
 			path = FamilySharingManager.swift;
 			sourceTree = "<group>";
 		};
+
 		59056B20A2D64FFD98A376C1 /* NotificationManager.swift */ = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.swift;
 			path = NotificationManager.swift;
 			sourceTree = "<group>";
 		};
+
 		740697748C804EF59F6D5491 /* PremiumStore.swift */ = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.swift;
@@ -91,54 +97,63 @@
 			path = AddEventView.swift;
 			sourceTree = "<group>";
 		};
+
 		D75A4F0E27C54BD0B058FCF2 /* ContentView.swift */ = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.swift;
 			path = ContentView.swift;
 			sourceTree = "<group>";
 		};
+
 		4E081015274645219A6D4A63 /* DashboardView.swift */ = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.swift;
 			path = DashboardView.swift;
 			sourceTree = "<group>";
 		};
+
 		30CF1083B42947DF871B2094 /* FamilySharingView.swift */ = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.swift;
 			path = FamilySharingView.swift;
 			sourceTree = "<group>";
 		};
+
 		D2F984CCC9DC4F49BB31D93D /* GrowthView.swift */ = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.swift;
 			path = GrowthView.swift;
 			sourceTree = "<group>";
 		};
+
 		84DB6E343E4E45DE949C1488 /* HistoryView.swift */ = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.swift;
 			path = HistoryView.swift;
 			sourceTree = "<group>";
 		};
+
 		72CAB0ED84BD4885A2353714 /* NotificationSettingsView.swift */ = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.swift;
 			path = NotificationSettingsView.swift;
 			sourceTree = "<group>";
 		};
+
 		AB666818882E453295AC15D9 /* OnboardingView.swift */ = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.swift;
 			path = OnboardingView.swift;
 			sourceTree = "<group>";
 		};
+
 		03AE56DFFEAE436BA0FD7FFC /* ProfileView.swift */ = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.swift;
 			path = ProfileView.swift;
 			sourceTree = "<group>";
 		};
+
 		0FE1C1CE58DA4FBA8467BB89 /* SettingsViews.swift */ = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.swift;
@@ -184,78 +199,97 @@
 			isa = PBXBuildFile;
 			fileRef = 9E080A71B0F847A7868FD6AE;
 		};
+
 		57D3B670C8E94BC39FAD25C8 /* BabyEventModel.swift in Sources */ = {
 			isa = PBXBuildFile;
 			fileRef = 104F85870AE7473BAB6D1195;
 		};
+
 		2F846D74402A4DFCA69DBEFB /* BabyModel.swift in Sources */ = {
 			isa = PBXBuildFile;
 			fileRef = 0E63B90934C8454AB35A8AFE;
 		};
+
 		FA846B9C3078447E8E6350D6 /* GrowthMeasurementModel.swift in Sources */ = {
 			isa = PBXBuildFile;
 			fileRef = 3DF92C3F4F3D4780B130B5FA;
 		};
+
 		CAFB5424B6D94D059711E759 /* WHOGrowthCalculator.swift in Sources */ = {
 			isa = PBXBuildFile;
 			fileRef = F2DB7E6BE8B3401F877E8C1B;
 		};
+
 		9F251A7FF2CB4F2599D60112 /* WHOGrowthStandard.swift in Sources */ = {
 			isa = PBXBuildFile;
 			fileRef = 0DAC4B3AC4A4499484F72286;
 		};
+
 		52E6A50F0945478CB987CE1E /* FamilySharingManager.swift in Sources */ = {
 			isa = PBXBuildFile;
 			fileRef = B1EE64BB0E224247A8E0B431;
 		};
+
 		E0BDF600154A4FA28EAA0F3A /* NotificationManager.swift in Sources */ = {
 			isa = PBXBuildFile;
 			fileRef = 59056B20A2D64FFD98A376C1;
 		};
+
 		5482AC458FBC49C1B6179295 /* PremiumStore.swift in Sources */ = {
 			isa = PBXBuildFile;
 			fileRef = 740697748C804EF59F6D5491;
 		};
+
 		42CDD44D340648E99BE38112 /* BabyDayTheme.swift in Sources */ = {
 			isa = PBXBuildFile;
 			fileRef = A4916B8F11D44847BEAA41A4;
 		};
+
 		C1619058131E4EEDA7B25B72 /* AddEventView.swift in Sources */ = {
 			isa = PBXBuildFile;
 			fileRef = 4048284072F84E32BBED2B4F;
 		};
+
 		47839357939241EEBD38B397 /* ContentView.swift in Sources */ = {
 			isa = PBXBuildFile;
 			fileRef = D75A4F0E27C54BD0B058FCF2;
 		};
+
 		950495E935E840709395213E /* DashboardView.swift in Sources */ = {
 			isa = PBXBuildFile;
 			fileRef = 4E081015274645219A6D4A63;
 		};
+
 		AE3F8BE8456F454694918AB1 /* FamilySharingView.swift in Sources */ = {
 			isa = PBXBuildFile;
 			fileRef = 30CF1083B42947DF871B2094;
 		};
+
 		5FA8FF5374914D449B5C7F99 /* GrowthView.swift in Sources */ = {
 			isa = PBXBuildFile;
 			fileRef = D2F984CCC9DC4F49BB31D93D;
 		};
+
 		1A6BE3EF7B2B41D9808C6352 /* HistoryView.swift in Sources */ = {
 			isa = PBXBuildFile;
 			fileRef = 84DB6E343E4E45DE949C1488;
 		};
+
 		729D29C111A84128A93BE812 /* NotificationSettingsView.swift in Sources */ = {
 			isa = PBXBuildFile;
 			fileRef = 72CAB0ED84BD4885A2353714;
 		};
+
 		A70BA70B42164555A2497E26 /* OnboardingView.swift in Sources */ = {
 			isa = PBXBuildFile;
 			fileRef = AB666818882E453295AC15D9;
 		};
+
 		5D839EF914634AFC866CD841 /* ProfileView.swift in Sources */ = {
 			isa = PBXBuildFile;
 			fileRef = 03AE56DFFEAE436BA0FD7FFC;
 		};
+
 		89E614988C634D2F90E1500E /* SettingsViews.swift in Sources */ = {
 			isa = PBXBuildFile;
 			fileRef = 0FE1C1CE58DA4FBA8467BB89;
@@ -520,19 +554,19 @@
 		F2F3CC8999284B73AC76CE15 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				SDKROOT = iphoneos;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BabyDay/BabyDay.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = BabyDay/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cengizgol.babyday;
+				PRODUCT_NAME = BabyDay;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.9;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.cengizgol.babyday;
-				INFOPLIST_FILE = BabyDay/Info.plist;
-				CODE_SIGN_ENTITLEMENTS = BabyDay/BabyDay.entitlements;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				CURRENT_PROJECT_VERSION = 1;
-				MARKETING_VERSION = 1.0.0;
-				CODE_SIGN_STYLE = Automatic;
 			};
 			name = Debug;
 		};
@@ -540,19 +574,19 @@
 		04ADC1D96F8546EC9EBBE288 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				SDKROOT = iphoneos;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BabyDay/BabyDay.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = BabyDay/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cengizgol.babyday;
+				PRODUCT_NAME = BabyDay;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.9;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.cengizgol.babyday;
-				INFOPLIST_FILE = BabyDay/Info.plist;
-				CODE_SIGN_ENTITLEMENTS = BabyDay/BabyDay.entitlements;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				CURRENT_PROJECT_VERSION = 1;
-				MARKETING_VERSION = 1.0.0;
-				CODE_SIGN_STYLE = Automatic;
 			};
 			name = Release;
 		};
@@ -581,8 +615,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-
-/* End XCConfigurationList section */
 
 	};
 	rootObject = 62352E98B44A4166BE8765E9 /* Project object */;
